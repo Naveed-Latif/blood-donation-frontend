@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   html {
@@ -8,50 +6,106 @@
   }
   
   body {
-    @apply antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    outline: none;
   }
   
   .btn-primary {
-    @apply bg-red-500 hover:bg-red-600 text-white focus:ring-red-500;
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #dc2626;
+  }
+  
+  .btn-primary:focus {
+    box-shadow: 0 0 0 2px #ef4444;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 focus:ring-gray-500;
+    background-color: #e5e7eb;
+    color: #1f2937;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d1d5db;
+  }
+  
+  .btn-secondary:focus {
+    box-shadow: 0 0 0 2px #6b7280;
   }
   
   .btn-outline {
-    @apply border border-red-500 text-red-500 hover:bg-red-500 hover:text-white focus:ring-red-500;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+  }
+  
+  .btn-outline:hover {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .btn-outline:focus {
+    box-shadow: 0 0 0 2px #ef4444;
   }
   
   .input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-colors;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+  
+  .input:focus {
+    box-shadow: 0 0 0 2px #ef4444;
+    border-color: transparent;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md p-6;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    padding: 1.5rem;
   }
   
   .card-hover {
-    @apply hover:shadow-lg transition-shadow duration-200;
+    transition: box-shadow 0.2s;
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
+    background-color: rgb(255 255 255 / 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(255 255 255 / 0.2);
   }
   
   .gradient-bg {
-    @apply bg-gradient-to-br from-red-50 to-pink-100;
+    background: linear-gradient(to bottom right, #fef2f2, #fce7f3);
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent;
+    background: linear-gradient(to right, #dc2626, #db2777);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 }
