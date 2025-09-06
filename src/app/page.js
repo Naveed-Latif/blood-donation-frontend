@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent } from "@/components/ui/Card";
+import { Layout } from "@/components/Layout/Layout";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
+    <Layout>
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-red-100">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -130,6 +132,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }
