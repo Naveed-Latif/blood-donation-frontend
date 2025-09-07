@@ -1,19 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-      appDir: true,
-    },
-    env: {
-      NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
-    },
-    async rewrites() {
-      return [
-        {
-          source: '/api/:path*',
-          destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
-        },
-      ]
-    },
-  }
-  
-  module.exports = nextConfig
+  reactStrictMode: true,
+
+  // Turbopack config (replaces experimental.turbo)
+  turbopack: {},
+
+  // Webpack config to handle Node.js modules
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+        os: false,
+        crypto: false,
+        stream: false,
+        assert: false,
+        http: false,
+        https: false,
+        url: false,
+        zlib: false,
+      };
+    }
+    return config;
+  },
+};
+
+export default nextConfig;
